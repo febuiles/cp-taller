@@ -1,0 +1,23 @@
+<p>Esta es mi venta de garage, hay muchas como ella pero esta es la mía.</p>
+
+<table>
+  <tr>
+    <th>Producto</th>
+    <th>Autor/Fabricante</th>
+    <th>Vendido?</th>
+    <th>Categoría</th>
+    <td></td>
+  </tr>
+
+  <% @items.each do |item| %>
+  <tr>
+    <td><%= item.title %></td>
+    <td><%= item.author %></td>
+    <td><%= item.sold? %></td>
+    <td><%= item.category %></td>
+    <td><%# buy_item_link(item) %></td>
+  </tr>
+  <% end %>
+</table>
+
+<p>Pregunte por lo que no vea. Si está interesado en mi cuerpo también me puede escribir a <a href="federico@mheroin.com">federico@mheroin.com</a>.</p>

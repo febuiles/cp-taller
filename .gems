@@ -1,0 +1,5 @@
+dm-core
+dm-sqlite-adapter
+dm-validations
+dm-migrations
+sinatra

@@ -1,0 +1,44 @@
+<h2>Nuevo Producto</h2>
+
+<% if @item.errors %>
+  <ul class="warning">
+    <% @item.errors.each do |error| %>
+    <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<form method="POST" action="/items">
+  <p>
+    <label for="title">Titulo:</label>
+    <input type="text" name="title" id="title" value="<%= @item.title %>" />
+  </p>
+
+  <p>
+    <label for="author">Autor/Fabricante:</label>
+    <input type="text" name="author" id="fabricante" value="<%= @item.author %>" />
+  </p>
+
+  <p>
+    <label for="price">Precio ($):</label>
+    <input type="text" name="price" id="price" value="<%= @item.price %>"/>
+  </p>
+
+  <p>
+    <label for="category">Categoría:</label>
+    <select name="category">
+      <option value="Libro">Libro</option>
+      <option value="Libro">DVD</option>
+      <option value="Libro">Drogas</option>
+    </select>
+  </p>
+
+  <p>
+    <label for="description">Descripción:</label>
+    <textarea name="description" id="description"><%= @item.description %></textarea>
+  </p>
+
+
+  <p><input type="submit" value="Guardar Producto" /></p>
+</form>
+
