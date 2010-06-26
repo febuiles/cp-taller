@@ -1,21 +1,24 @@
 <p>Esta es mi venta de garage, hay muchas como ella pero esta es la mía.</p>
 
+<% if @notice %>
+  <span class="notice"><%= @notice %></span>
+<% end %>
+
 <table>
   <tr>
     <th>Producto</th>
     <th>Autor/Fabricante</th>
     <th>Vendido?</th>
     <th>Categoría</th>
-    <td></td>
   </tr>
 
   <% @items.each do |item| %>
   <tr>
-    <td><%= item.title %></td>
+    <td><a href="/items/<%= item.id %>"><%= item.title %></a></td>
     <td><%= item.author %></td>
     <td><%= item.sold? %></td>
     <td><%= item.category %></td>
-    <td><%# buy_item_link(item) %></td>
+    <td><%= buy_item_link(item) unless item.sold %></td>
   </tr>
   <% end %>
 </table>

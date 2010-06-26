@@ -2,7 +2,7 @@ body { font-size: 16px; font-family: Helvetica, Arial, sans-serif; margin-left: 
 
 h1 { color: #FF3366; border-bottom: 1px dotted; font-size: 2.5em; width: 680px;}
 
-p, form { font-family: "Gill Sans MT", Helvetica, Arial, sans-serif; width: 660px; }
+p, form { font-family: "Gill Sans MT", Helvetica, Arial, sans-serif;  }
 
 table {  text-align: left; border-collapse: collapse; }
 td,th { padding: 1em 2em 1em 0.7em;}
@@ -20,4 +20,11 @@ em { color: #999; font-family: Georgia;}
 input[type=text] { width: 200px; }
 textarea { width: 200px; height: 100px;}
 
+span.notice {
+  background-color: #C3D9FF;
+  color: #0065CC;
+  display: block; padding: 3px;
+  font-size: 0.8em;
+  width: 678px;
+}
 .warning li { color: #FF3366; }

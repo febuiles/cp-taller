@@ -7,6 +7,10 @@ before do
   content_type :html, :charset => 'utf-8'
 end
 
+get "/" do
+  redirect "/items"
+end
+
 get "/items" do
   @items = Item.all
   erb :index
@@ -31,30 +35,48 @@ get "/items/:id" do
   erb :show
 end
 
-delete "/items/:id" do
+delete "/items" do
   item = Item.get(params[:id])
   item.destroy unless item.nil?
 
   redirect "/items"
 end
 
-get "/buy/:id" do
-  @item = Item.get(params[:id])
-  if @item.sold
-    status 404
+put "/items" do
+  item = Item.get(params[:id])
+  error 500 if item.nil?
+
+  if item.sell
+    @items = Item.all
+    @notice = "Felicitaciones por la compra de: #{item.title}"
+    erb :index
   else
-    haml :buy
+    not_found("No encontramos el producto que intentas comprar")
   end
 end
 
-post "/buy" do
-  if valid_params?
-    name, email = params[:name], params[:email]
-    @item = Item.get(params[:id])
-    @item.sell(name, email)
-    mail(name, email, @item.title)
-    haml :thanks
-  else
-    status 500
+helpers do
+
+  def buy_item_link(item)
+    html = <<HTML
+<form action="/items" method="post">
+  <input type="hidden" name="_method" value="put" />
+  <input type="hidden" name="id" value="#{item.id}" />
+  <input type="submit" value="Comprar" />
+</form>
+HTML
+    html if !item.nil?
+  end
+
+  def delete_item_link(item)
+    html = <<HTML
+<form action="/items" method="post">
+  <input type="hidden" name="_method" value="delete" />
+  <input type="hidden" name="id" value="#{item.id}" />
+  <input type="submit" value="Eliminar" />
+</form>
+HTML
+    html if !item.nil?
   end
 end
+

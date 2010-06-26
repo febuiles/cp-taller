@@ -13,8 +13,6 @@ configure :production do
 end
 
 class Item
-
-  CATEGORIES = ["Programación", "Literatura", "DVD"]
   include DataMapper::Resource
 
   property :id, Serial
@@ -23,12 +21,9 @@ class Item
   property :author, String
   property :description, Text
   property :price, String, :default => "20000"
-
-  property :buyer, String
-  property :buyer_email, String
-  property :sold, Boolean, :default => false
   property :category, String
 
+  property :sold, Boolean, :default => false
 
   validates_presence_of :title, :message => "El producto necesita un título"
   validates_presence_of :author, :message => "El producto necesita un autor o fabricante"
@@ -38,15 +33,8 @@ class Item
     sold ? "Si" : "No"
   end
 
-  def sell(name, email)
-    self.buyer = name
-    self.buyer_email = email
+  def sell
     self.sold = true
-    self.save
+    save
   end
 end
-
-#configure :development do
-
-#end
-
