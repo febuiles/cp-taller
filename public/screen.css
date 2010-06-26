@@ -2,7 +2,10 @@ body { font-size: 16px; font-family: Helvetica, Arial, sans-serif; margin-left: 
 
 h1 { color: #FF3366; border-bottom: 1px dotted; font-size: 2.5em; width: 680px;}
 
-p, form { font-family: "Gill Sans MT", Helvetica, Arial, sans-serif;  }
+
+p, form { font-family: "Gill Sans MT", Helvetica, Arial, sans-serif; }
+p { width: 660px; }
+form { display: inline; }
 
 table {  text-align: left; border-collapse: collapse; }
 td,th { padding: 1em 2em 1em 0.7em;}
