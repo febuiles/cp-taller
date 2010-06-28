@@ -1,8 +1,6 @@
 require "sinatra"
 require "models"
 
-enable :static
-
 before do
   content_type :html, :charset => 'utf-8'
 end

@@ -4,8 +4,8 @@ require 'dm-migrations'
 require 'dm-validations'
 
 configure :development do
-  DataMapper.auto_upgrade!
-  DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/data.db")
+
+  DataMapper::setup(:default, "mysql://root@localhost/foo")
 end
 
 configure :production do
@@ -38,3 +38,5 @@ class Item
     save
   end
 end
+
+Item.auto_upgrade!
